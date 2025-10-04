@@ -332,25 +332,18 @@ MIT License - See LICENSE file for details
 
 Pre-built images are available on Docker Hub:
 
-```bash
-# Pull images
-docker pull <your-dockerhub-username>/omop-api:latest
-docker pull <your-dockerhub-username>/omop-web:latest
+- **API**: https://hub.docker.com/r/solerb09/omop-api
+- **Web**: https://hub.docker.com/r/solerb09/omop-web
 
-# Run with Docker Hub images
-docker compose -f docker-compose.hub.yml up
-```
-
-### **Building & Pushing to Docker Hub**
+### **Pull & Run from Docker Hub**
 
 ```bash
-# Build images
-docker build -t <your-username>/omop-api:latest ./api
-docker build -t <your-username>/omop-web:latest ./web
+# Pull pre-built images
+docker pull solerb09/omop-api:latest
+docker pull solerb09/omop-web:latest
 
-# Push to Docker Hub
-docker push <your-username>/omop-api:latest
-docker push <your-username>/omop-web:latest
+# Run the application
+docker compose up
 ```
 
 ---
