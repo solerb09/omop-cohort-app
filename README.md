@@ -353,43 +353,25 @@ docker push <your-username>/omop-web:latest
 
 ## **AI Assistance Disclosure**
 
-This project was developed with assistance from **Claude (Anthropic)** and **Cursor AI**.
+This project was developed with assistance from **Claude Sonnet 4.5** via Cursor IDE.
 
-### **AI Platforms Used:**
-1. **Claude Sonnet 4.5** (via Cursor IDE)
-   - Code generation and architecture design
-   - React component development
-   - FastAPI endpoint implementation
-   - SQL query optimization
-   - Documentation writing
+### **AI Support Provided:**
 
-### **Key Prompts Used:**
+1. **Initial Project Foundation**
+   - Helped establish the basic project structure and architecture
+   - Provided boilerplate code for FastAPI backend and React frontend setup
 
-1. **Initial Setup:**
-   - "Build a full-stack OMOP cohort analysis app with React, FastAPI, and DuckDB"
-   - "Create SQL scripts to load SYNPUF data and build diabetes cohorts"
+2. **Data Handling**
+   - Assisted in locating and downloading SYNPUF CSV files from AWS S3
+   - Helped generate synthetic measurement data (Hemoglobin, Glucose, DBP, SBP) since SYNPUF lacks actual measurement values
 
-2. **Backend Development:**
-   - "Create FastAPI endpoints for disease selection, cohort building, and measurement analysis"
-   - "Add mock authentication with signup, login, and password reset"
+3. **SQL Scripts**
+   - Provided guidance on SQL syntax for loading CSV data into DuckDB
+   - Assisted with cohort building and demographic calculation queries
 
-3. **Frontend Development:**
-   - "Build React components for disease selector, cohort builder, and measurement picker"
-   - "Create an age/sex comparison bar chart with Recharts and export functionality"
-   - "Build a box plot with Plotly that supports hover tooltips, zoom, and PNG/PDF export"
+### **Development Approach:**
 
-4. **Docker & Deployment:**
-   - "Create Dockerfiles for FastAPI and React with nginx"
-   - "Write a docker-compose.yml for full-stack deployment"
-
-5. **Documentation:**
-   - "Update README with usage guide, OMOP table explanations, and cohort logic"
-
-### **Development Workflow:**
-- AI assisted with ~80% of code generation
-- Human review, testing, and refinement of all generated code
-- Custom modifications for SYNPUF-specific data handling
-- Manual integration and debugging
+All core business logic, cohort definitions, chart implementations, and UI/UX design were independently developed. AI assistance was primarily used for initial scaffolding, data preparation tasks, and resolving specific technical issues during development.
 
 ---
 
