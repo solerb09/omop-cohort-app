@@ -11,11 +11,11 @@ This application builds and analyzes **case-control cohorts** from OMOP CDM data
 - **CONTROL cohort**: Patients without diabetes
 
 ### **Key Features**
-- ✅ SQL-based cohort derivation using OMOP standard concept IDs
-- ✅ Demographic stratification by age group and sex
-- ✅ Glucose measurement analysis (box plots, summary statistics)
-- ✅ Interactive visualizations with zoom, tooltips, and export (PNG/PDF)
-- ✅ RESTful API for data access
+- SQL-based cohort derivation using OMOP standard concept IDs
+- Demographic stratification by age group and sex
+- Glucose measurement analysis (box plots, summary statistics)
+- Interactive visualizations with zoom, tooltips, and export (PNG/PDF)
+- RESTful API for data access
 
 ---
 
@@ -34,23 +34,27 @@ This application builds and analyzes **case-control cohorts** from OMOP CDM data
 ### **1. `person`**
 - **Columns**: `PERSON_ID`, `GENDER_CONCEPT_ID`, `YEAR_OF_BIRTH`
 - **Purpose**: Patient demographics (age, gender) for both cohorts
+- I used the person table to obtain key demographic information such as age and gender. These variables are essential for cohort characterization, enabling demographic summaries and comparisons between the disease and control groups.
 
-### **2. `condition_occurrence`** ✓ (Required)
+### **2. `condition_occurrence`** 
 - **Columns**: `PERSON_ID`, `CONDITION_CONCEPT_ID`, `CONDITION_START_DATE`
 - **Purpose**: Identify diabetes patients using condition concept ID 201826
+- This table was used to identify patients with Type 2 diabetes based on the relevant condition concept ID (201826). It provides information about diagnoses and their dates, which is necessary to define the case cohort (patients with diabetes) and establish index dates for disease onset.
 
-### **3. `concept`** ✓ (Required)
+### **3. `concept`**
 - **Columns**: `concept_id`, `concept_name`
 - **Purpose**: Map concept IDs to human-readable names
   - 8507 → "Male"
   - 8532 → "Female"
   - 201826 → "Type 2 diabetes mellitus"
+-The concept table serves as a reference for mapping numeric concept IDs to human-readable names (e.g., gender categories and disease labels). This improves interpretability of the results and ensures that the cohorts and variables are clearly defined in the output.
 
-### **4. `measurement`** ✓ (Required)
+### **4. `measurement`**
 - **Columns**: `PERSON_ID`, `MEASUREMENT_DATE`, `MEASUREMENT_CONCEPT_ID`
 - **Purpose**: 
   - Assign index dates to control patients (first measurement date)
   - Generate synthetic glucose measurements for outcome analysis
+-I used the measurement table to assign index dates for control patients (based on their first measurement date), ensuring a consistent temporal anchor for comparison. Additionally, since the SynPUF dataset does not contain real glucose values, I generated synthetic measurement data to enable downstream outcome analyses and demonstrate the app’s functionality.
 
 ---
 
@@ -368,31 +372,9 @@ This project was developed with assistance from **Claude Sonnet 4.5** via Cursor
 3. **SQL Scripts**
    - Provided guidance on SQL syntax for loading CSV data into DuckDB
    - Assisted with cohort building and demographic calculation queries
-
-### **Development Approach:**
-
-All core business logic, cohort definitions, chart implementations, and UI/UX design were independently developed. AI assistance was primarily used for initial scaffolding, data preparation tasks, and resolving specific technical issues during development.
-
----
-
-## **Screenshots**
-
-*(Add screenshots here showing:)*
-1. Login page
-2. Disease selection dropdown
-3. Cohort builder with counts
-4. Age/sex comparison chart
-5. Box plot with export options
-6. Summary statistics display
-
----
-
-## **Contact**
-
-For questions or issues, please open a GitHub issue.
-
----
-
+4. **Synthetic Data**
+  - Provided guidance and logic to create synthethic data for user-friendly flow
+  - Assisted when needed to make sure numbers are as accurate as possible
 ## **License**
 
 MIT License - See LICENSE file for details
