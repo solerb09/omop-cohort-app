@@ -8,7 +8,7 @@ aws s3 sync --no-sign-request s3://synpuf-omop/cmsdesynpuf1k/ data/synpuf_1k/
 bunzip2 data/synpuf_1k/*.bz2
 
 # 2. Build cohorts
-duckdb data/omop.duckdb ".read scripts/load_data.sql" ".read scripts/create_concept.sql" ".read scripts/setup_cohorts.sql" ".read scripts/demographics.sql" ".read scripts/generate_synthetic_measurements.sql"
+duckdb data/omop.duckdb ".read scripts/load_data.sql" ".read scripts/create_concept.sql" ".read scripts/setup_cohorts.sql" ".read scripts/demographics.sql" ".read scripts/generate_all_measurements.sql"
 
 # 3. Run app
 docker compose up --build
@@ -48,7 +48,7 @@ duckdb data/omop.duckdb <<EOF
 .read scripts/create_concept.sql
 .read scripts/setup_cohorts.sql
 .read scripts/demographics.sql
-.read scripts/generate_synthetic_measurements.sql
+.read scripts/generate_all_measurements.sql
 EOF
 ```
 

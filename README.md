@@ -162,7 +162,7 @@ omop-cohort-app/
 │   ├── create_concept.sql       # Create concept mapping table
 │   ├── setup_cohorts.sql        # Build CASE/CONTROL cohorts
 │   ├── demographics.sql         # Calculate age/gender demographics
-│   └── generate_synthetic_measurements.sql  # Create synthetic glucose data
+│   └── generate_all_measurements.sql  # Create synthetic measurement data (all 4 types)
 ├── web/                          # React frontend
 │   └── Dockerfile
 ├── docker-compose.yml
@@ -194,7 +194,7 @@ duckdb data/omop.duckdb \
   ".read scripts/create_concept.sql" \
   ".read scripts/setup_cohorts.sql" \
   ".read scripts/demographics.sql" \
-  ".read scripts/generate_synthetic_measurements.sql"
+  ".read scripts/generate_all_measurements.sql"
 ```
 
 ### **2. Run with Docker Compose**

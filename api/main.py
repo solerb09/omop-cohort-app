@@ -89,14 +89,14 @@ async def login(credentials: UserLogin):
 
 @app.post("/api/auth/reset-password")
 async def reset_password(reset: PasswordReset):
-    """Mock password reset"""
+    """Mock password reset (demo purposes - no actual email sent)"""
     if reset.email not in users_db:
         # Don't reveal if user exists (security best practice)
         pass
     
     return {
         "success": True,
-        "message": f"Password reset email sent to {reset.email}"
+        "message": f"Password reset link would be sent to {reset.email} (mock)"
     }
 
 # ==================== Disease Selection ====================
@@ -170,27 +170,27 @@ async def build_cohorts(request: CohortRequest, db: duckdb.DuckDBPyConnection = 
 @app.get("/api/measurements/available")
 async def get_available_measurements():
     """Get available measurement types"""
-    # Common OMOP measurement concepts
+    # OMOP measurement concepts as specified
     return {
         "measurements": [
             {
-                "concept_id": 3034639,
+                "concept_id": 3000963,
+                "name": "Hemoglobin [Mass/volume] in Blood",
+                "unit": "g/dL"
+            },
+            {
+                "concept_id": 3004501,
                 "name": "Glucose [Mass/volume] in Serum or Plasma",
                 "unit": "mg/dL"
             },
             {
-                "concept_id": 3004410,
-                "name": "Hemoglobin A1c/Hemoglobin.total in Blood",
-                "unit": "%"
-            },
-            {
-                "concept_id": 3004249,
-                "name": "Systolic Blood Pressure (SBP)",
+                "concept_id": 3012888,
+                "name": "Diastolic blood pressure",
                 "unit": "mmHg"
             },
             {
-                "concept_id": 3012888,
-                "name": "Diastolic Blood Pressure (DBP)",
+                "concept_id": 3004249,
+                "name": "Systolic blood pressure",
                 "unit": "mmHg"
             }
         ]

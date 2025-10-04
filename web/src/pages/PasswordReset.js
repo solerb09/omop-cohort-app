@@ -33,11 +33,19 @@ function PasswordReset() {
         <h2>Reset Password</h2>
         
         <p className="auth-description">
-          Enter your email address and we'll send you a link to reset your password.
+          <strong>Demo Mode:</strong> This is a mock password reset flow for demonstration purposes. 
+          In a production app, an email would be sent to reset your password.
         </p>
 
         {error && <div className="alert alert-error">{error}</div>}
-        {message && <div className="alert alert-success">{message}</div>}
+        {message && (
+          <div className="alert alert-success">
+            <strong>✓ Password reset initiated!</strong><br />
+            In a real application, you would receive an email at <strong>{email}</strong> with a reset link.
+            <br /><br />
+            <em>Note: This is a demo - no actual email was sent.</em>
+          </div>
+        )}
         
         <form onSubmit={handleSubmit}>
           <div className="form-group">

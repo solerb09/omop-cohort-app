@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: omop-api
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
       - ./data:/app/data:ro
       - ./api/main.py:/app/main.py
@@ -25,11 +25,11 @@ services:
       dockerfile: Dockerfile
     container_name: omop-web
     ports:
-      - "80:80"
+      - "8000:80"
     depends_on:
       - api
     environment:
-      - REACT_APP_API_URL=http://localhost:8000
+      - REACT_APP_API_URL=http://localhost:8001
     restart: unless-stopped
 
 volumes:
