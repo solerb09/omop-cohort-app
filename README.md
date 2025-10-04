@@ -180,7 +180,7 @@ omop-cohort-app/
 ### **Prerequisites**
 - Docker and Docker Compose installed
 - 2GB free disk space
-- Ports 80 and 8000 available
+- Ports 8000 available
 
 ### **1. Clone & Setup**
 
@@ -209,7 +209,7 @@ docker compose up --build
 
 ### **3. Open Application**
 
-Navigate to **http://localhost:80** in Chrome/Firefox
+Navigate to **http://localhost:8000 in Chrome/Firefox
 
 ---
 
@@ -275,7 +275,7 @@ npm install
 npm start
 ```
 
-Then open http://localhost:3000
+Then open http://localhost:8000
 
 ---
 
